@@ -152,44 +152,6 @@ function removeError(element) {
   errorBox.innerText = "";
 }
 
-// function setField(e) {
-//   const name = e.target.name;
-//   const value = e.target.value;
-
-//   forma.fields[name] = value;
-//   console.log(forma.fields);
-// }
-
-// window.forma = {
-//   obj: null,
-//   fields: null,
-//   set elm(obj) {
-//     if (this.obj === obj) return;
-//     this.obj = obj;
-//     this.fields = getFields(obj);
-//     for (const field in this.fields) {
-//       let input = this.obj.querySelector(`[name=${field}]`);
-//       switch (input.type) {
-//         case "text":
-//         case "textarea":
-//         case "password":
-//         case "email":
-//           input.addEventListener("input", setField);
-//           break;
-//         case "checkbox":
-//         case "radio":
-//           input.addEventListener("change", setField);
-//           break;
-//         default:
-//           break;
-//       }
-//     }
-//     // input.addEventListener("blur", setField);
-//   }
-// };
-
-// forma.elm = document.querySelector("form.registration");
-
 function getFields(form) {
   let inputs = {};
   for (let i = 0; i < form.elements.length; i++) {
