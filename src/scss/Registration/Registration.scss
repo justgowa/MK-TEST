@@ -1,0 +1,63 @@
+$err-color: #9f2b11;
+
+.registration {
+  position: relative;
+}
+
+.registration__title {
+  margin: 0;
+
+  font-weight: normal;
+  line-height: 28px;
+  font-style: 24px;
+}
+
+.registration__field {
+  padding-top: 30px;
+}
+
+.registration__text-input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 11px;
+
+  border: 1px solid #dddddd;
+
+  &:focus {
+    border: 1px solid #82b3d9;
+    box-shadow: 0 0 5px 0 rgba($color: #82b3d9, $alpha: 0.5);
+  }
+}
+
+.registration__text-input.error {
+  border-color: $err-color;
+}
+
+.registration__field > label {
+  display: block;
+  margin-bottom: 10px;
+
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.registration__user-agreement {
+  margin-bottom: 36px;
+  padding-top: 38px;
+
+  line-height: 14px;
+  font-size: 12px;
+}
+
+.registration__button {
+  margin: 0 auto;
+}
+
+.form-error {
+  display: block;
+  min-height: 14px;
+  font-size: 12px;
+  line-height: 14px;
+  color: $err-color;
+}

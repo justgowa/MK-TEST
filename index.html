@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Кондрев Георгий - тестовое задание</title>
+    <link rel="stylesheet" href="./build/style.css" />
+    <!-- <link rel="stylesheet" href="style.css"> -->
+  </head>
+  <body>
+    <main>
+      <h1 class="hidden">Страница регистрации</h1>
+      <div class="container content">
+        <div class="registration-wrapper">
+          <a
+            class="button open-registration-modal"
+            href="registration.html"
+            onclick="return false"
+          >
+            Регистрация
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <section class="modal form-modal hidden">
+      <div class="modal-inner">
+        <button class="modal__close-button">Закрыть</button>
+        <form class="registration" action="yoururl.com" method="POST">
+          <h2 class="registration__title">Регистрация</h2>
+          <div class="registration__field">
+            <label for="email">E-mail</label>
+            <input
+              class="registration__text-input form-control"
+              type="email"
+              name="email"
+              id="email"
+            />
+            <span class="form-error"></span>
+          </div>
+          <div class="registration__field">
+            <label for="nickname">Никнейм</label>
+            <input
+              class="registration__text-input form-control"
+              type="text"
+              name="nickname"
+              id="nickname"
+            />
+            <span class="form-error"></span>
+          </div>
+          <div class="registration__field">
+            <label for="password">Пароль</label>
+            <input
+              class="registration__text-input form-control"
+              type="password"
+              name="password"
+              id="password"
+            />
+            <section class="password-hints">
+              <p class="password-hints__title">
+                Пароль должен содержать:
+              </p>
+              <ul class="password-hints__list">
+                <li class="password-hints__item">от 6 до 32 символов</li>
+                <li class="password-hints__item">
+                  цифру
+                </li>
+                <li class="password-hints__item">
+                  заглавную и строчкую буквы
+                </li>
+              </ul>
+            </section>
+            <span class="form-error"></span>
+          </div>
+          <div class="registration__field">
+            <label for="password-repeated">Пароль еще раз</label>
+            <input
+              class="registration__text-input form-control"
+              type="password"
+              name="password-repeated"
+              id="password-repeated"
+            />
+            <span class="form-error"></span>
+          </div>
+          <div class="registration__user-agreement user-agreement">
+            <label for="user-agreement">
+              <input
+                class="hidden form-control"
+                type="checkbox"
+                name="user-agreement"
+                value="yes"
+                id="user-agreement"
+              />
+              <span class="checkbox-indicator"></span>
+              Я принимаю условия
+              <a class="user-agreement__link" href="user-agreement.html"
+                >Пользовательского соглашения</a
+              >
+              <span class="form-error"></span>
+            </label>
+          </div>
+          </div>
+          <button class="button registration__button disabled" type="submit">
+            Зарегистрироваться
+          </button>
+        </form>
+      </div>
+    </section>
+    <script src="build/bundle.js"></script>
+    <script></script>
+  </body>
+</html>

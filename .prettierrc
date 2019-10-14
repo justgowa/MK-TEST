@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "files": [".scss", ".css"],
+      "options": { "parser": "scss" }
+    },
+    {
+      "files": [".html"],
+      "options": { "jsxBracketSameLine": false }
+    }
+  ]
+}
