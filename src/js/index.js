@@ -3,15 +3,33 @@ let closeButton = document.querySelector(".modal__close-button");
 let regOpenButton = document.querySelector(".open-registration-modal");
 let regButton = document.querySelector(".registration__button");
 let formModal = document.querySelector(".form-modal");
+const hints = document.querySelectorAll(".password-hints__item");
 let validState = {};
 let state = {};
+
 function formCloseHanler(evt) {
   evt.preventDefault();
   form.reset();
   formModal.classList.add("hidden");
+  for (const field in validState) {
+    removeError(document.querySelector(`[name=${field}]`));
+  }
+  passwordRules.forEach((rule, idx) => {
+    rule.status = null;
+    hints[idx].classList.remove("password-hints__item--error");
+    hints[idx].classList.remove("password-hints__item--success");
+  });
 }
 
 regOpenButton.onclick = e => {
+  Array.from(form.elements).forEach(field => {
+    if (field.tagName.toLowerCase() != "button") {
+      validState[field.name] = false;
+      field.addEventListener("change", validateField);
+      if (field.name === "password")
+        field.addEventListener("input", validatePassword);
+    }
+  });
   e.preventDefault();
   formModal.classList.remove("hidden");
   regButton.onclick = e => {
@@ -23,11 +41,9 @@ closeButton.onclick = formCloseHanler;
 
 passwordRules = [
   { status: null, regExp: /^.{6,32}$/ },
-  { status: null, regExp: /(?=.*[a-z])(?=.*[A-Z])/ },
-  { status: null, regExp: /[0-9]/ }
+  { status: null, regExp: /[0-9]/ },
+  { status: null, regExp: /(?=.*[a-z])(?=.*[A-Z])/ }
 ];
-
-const hints = document.querySelectorAll(".password-hints__item");
 
 function validatePassword(e) {
   const value = e.target.value;
@@ -48,15 +64,6 @@ function validatePassword(e) {
     passwordRules[idx].status = status;
   });
 }
-
-Array.from(form.elements).forEach(field => {
-  if (field.tagName.toLowerCase() != "button") {
-    validState[field.name] = false;
-    field.addEventListener("change", validateField);
-    if (field.name === "password")
-      field.addEventListener("input", validatePassword);
-  }
-});
 
 function validateField(e) {
   let isFormValid = true;
@@ -150,31 +157,6 @@ function removeError(element) {
   element.classList.remove("error");
   const errorBox = element.parentNode.querySelector(".form-error");
   errorBox.innerText = "";
-}
-
-function getFields(form) {
-  let inputs = {};
-  for (let i = 0; i < form.elements.length; i++) {
-    const element = form.elements[i];
-
-    if (element.tagName.toLowerCase() != "button") {
-      switch (element.type) {
-        case "checkbox":
-          inputs[element.name] = inputs[element.name] || [];
-          if (element.checked) {
-            const value = {
-              [element.value]: element.checked
-            };
-            inputs[element.name] = [...inputs[element.name], value];
-          }
-          break;
-        default:
-          inputs[element.name] = element.value;
-          break;
-      }
-    }
-  }
-  return inputs;
 }
 
 function finishRegistration() {
