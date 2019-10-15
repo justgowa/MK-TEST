@@ -35,7 +35,8 @@ body {
 
 .form-modal {
   padding: 40px;
-  width: 400px;
+  max-width: 400px;
+  width: 50%;
   position: fixed;
   top: 50%;
   left: 50%;
